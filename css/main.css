@@ -759,3 +759,36 @@ body::before {
 .action-card:active {
   transform: scale(0.97);
 }
+
+/* ===== Enhanced Subscription Action Cards ===== */
+
+.action-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(44,53,72,0.6);
+  box-shadow: 0 0 12px rgba(44,53,72,0.25);
+}
+
+.action-card .subscription-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-card .subscription-name {
+  text-align: center;
+  width: 100%;
+  font-weight: 500;
+}
+
+/* Hover эффект */
+.action-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(60,80,120,0.9);
+  box-shadow: 0 0 22px rgba(60,80,120,0.45);
+}
+
+/* Нажатие */
+.action-card:active {
+  transform: scale(0.96);
+}

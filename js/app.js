@@ -124,7 +124,7 @@ if (!hasSubscription) {
       <div class="card subscription-card action-card" id="trialBtn">
         <div class="subscription-content">
           <div class="subscription-name">
-            Получить пробную подписку (2 дня)
+            Получить пробную подписку
           </div>
         </div>
       </div>
