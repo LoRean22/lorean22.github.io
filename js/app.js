@@ -97,33 +97,44 @@ function renderPage(page) {
   }
 
   if (page === "subscriptions") {
-
-    const hasSubscription =
+    const hasSub =
       subscriptionData &&
       subscriptionData.subscription_type &&
       subscriptionData.subscription_expires &&
       new Date(subscriptionData.subscription_expires) > new Date();
 
-    if (!hasSubscription) {
+    if (!hasSub) {
       container.innerHTML = `
         <h1>Подписки</h1>
 
-        <div style="text-align:center; margin-top:60px; color: var(--muted); font-size:15px;">
-          У вас нет активных подписок
-        </div>
+        <div class="no-sub-wrapper">
+          <div class="no-sub-text">
+            У вас нет активных подписок
+          </div>
 
-        <button class="primary-btn" style="margin-top:40px;">
-          Купить подписку
-        </button>
+          <button class="buy-sub-btn">
+            Купить подписку
+
+            <span class="btn-icon">
+              <!-- Твоя иконка -->
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 2l1.5 4H22l-2 7H9l-1.5-4H3"/>
+              </svg>
+            </span>
+          </button>
+        </div>
       `;
     } else {
       container.innerHTML = `
         <h1>Подписки</h1>
 
         <div class="card subscription-card clickable">
-          <div class="subscription-content">
-            <strong>${subscriptionData.subscription_type.toUpperCase()}</strong>
-            <div class="hint">
+          <div class="sub-content">
+            <div class="sub-title">
+              ${subscriptionData.subscription_type.toUpperCase()}
+            </div>
+
+            <div class="sub-date">
               Действует до: ${new Date(
                 subscriptionData.subscription_expires
               ).toLocaleDateString()}
@@ -131,14 +142,17 @@ function renderPage(page) {
           </div>
 
           <div class="gear-bg">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456l.33-1.652ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456l.33-1.652ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                clip-rule="evenodd"/>
             </svg>
           </div>
         </div>
       `;
     }
   }
+
 
 
   if (page === "profile") {
