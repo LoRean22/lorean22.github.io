@@ -928,16 +928,6 @@ body::before {
   transform: scale(0.96);
 }
 
-/* ===== 1️⃣ Купить подписку (Primary) ===== */
-
-#buySubBtn {
-  border: 1px solid rgba(70,100,160,0.9);
-  box-shadow: 0 0 18px rgba(70,100,160,0.45);
-}
-
-#buySubBtn:hover {
-  box-shadow: 0 0 28px rgba(70,100,160,0.65);
-}
 
 /* ===== 2️⃣ Trial (Shimmer) ===== */
 
@@ -968,21 +958,6 @@ body::before {
   100% { left: 120%; }
 }
 
-/* ===== 3️⃣ Ключ активации (Utility) ===== */
-
-#activateKeyBtn {
-  border: 1px solid rgba(44,53,72,0.5);
-}
-
-#activateKeyBtn .subscription-name {
-  color: rgba(200,210,230,0.6);
-}
-
-#activateKeyBtn:hover {
-  border-color: rgba(70,90,140,0.7);
-  box-shadow: 0 0 14px rgba(70,90,140,0.3);
-}
-
 /* ===== Subscriptions Layout ===== */
 
 .subscriptions-page {
@@ -1001,7 +976,7 @@ body::before {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 4px; /* теперь gap реально работает */
+  gap: 8px; /* теперь gap реально работает */
   margin-bottom: 14px;
 }
 
