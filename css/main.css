@@ -1,9 +1,11 @@
 :root {
-  --bg: #000000;
-  --card: #0f1115;
-  --blue: #2f80ff;
-  --text: #ffffff;
-  --muted: #8b8b8b;
+  --bg: #0a0f14;
+  --card: rgba(255,255,255,0.02);
+  --accent: #1b2230;
+  --accent-hover: #232c3d;
+  --accent-glow: #2c3548;
+  --text: #e6f1ff;
+  --muted: #6b7280;
   --radius: 16px;
 }
 
@@ -18,427 +20,7 @@ body {
   color: var(--text);
 }
 
-#app {
-  min-height: 100vh;
-  padding-bottom: 90px;
-}
-
-h1 {
-  font-size: 28px;
-  margin: 20px;
-}
-
-.card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 16px;
-  margin: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.card span {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.primary-btn {
-  background: var(--blue);
-  border: none;
-  border-radius: 14px;
-  padding: 16px;
-  color: #fff;
-  font-size: 16px;
-  width: calc(100% - 32px);
-  margin: 20px 16px;
-}
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 70px;
-  background: #050505;
-  display: flex;
-  border-top: 1px solid #111;
-}
-
-.bottom-nav button {
-  flex: 1;
-  background: none;
-  border: none;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.bottom-nav button.active {
-  color: var(--blue);
-}
-
-.card.clickable {
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.card.clickable:hover {
-  background: #151820;
-}
-
-.price {
-  color: var(--blue);
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.card.best {
-  border: 1px solid var(--blue);
-}
-
-.header {
-  padding: 16px;
-}
-
-.back-btn {
-  background: none;
-  border: none;
-  color: var(--blue);
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.label {
-  display: block;
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-
-.input {
-  width: 100%;
-  padding: 14px;
-  background: #050505;
-  border: 1px solid #1a1a1a;
-  border-radius: 12px;
-  color: var(--text);
-  font-size: 15px;
-}
-
-.input::placeholder {
-  color: #555;
-}
-
-.secondary-btn {
-  background: none;
-  border: 1px solid var(--blue);
-  color: var(--blue);
-  border-radius: 14px;
-  padding: 14px;
-  width: calc(100% - 32px);
-  margin: 12px 16px 24px;
-  font-size: 15px;
-}
-
-.subtitle {
-  color: var(--muted);
-  font-size: 14px;
-  margin: -8px 16px 16px;
-}
-
-.section-title {
-  font-size: 16px;
-  margin: 20px 16px 8px;
-}
-
-.hint {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 6px;
-}
-
-.card.checkbox {
-  display: flex;
-  align-items: center;
-}
-
-.card.checkbox label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-}
-
-.card.checkbox input[type="checkbox"] {
-  accent-color: var(--blue);
-}
-
-.primary-btn.danger {
-  background: #1e3a8a; /* тёмно-синий */
-}
-
-
-.input-large {
-  padding: 18px;
-  font-size: 15px;
-}
-
-.input::placeholder {
-  color: rgba(255, 255, 255, 0.35);
-}
-
-button {
-  cursor: pointer;
-}
-
-.primary-btn:active,
-.secondary-btn:active {
-  transform: scale(0.98);
-}
-
-.profile-card {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-.username {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.tg-id {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.subscription-title {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.subscription-value {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--blue);
-}
-
-.bottom-nav button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  color: var(--muted);
-  transition: all 0.2s ease;
-}
-
-.bottom-nav svg {
-  width: 22px;
-  height: 22px;
-}
-
-.bottom-nav button span {
-  font-size: 11px;
-}
-
-.bottom-nav button.active {
-  color: var(--blue);
-  transform: translateY(-2px);
-}
-
-
-.subscription-card {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.subscription-content {
-  position: relative;
-  z-index: 2;
-}
-
-.gear-bg {
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 120px;
-  height: 120px;
-  opacity: 0.05;
-  z-index: 1;
-}
-
-.gear-bg svg {
-  width: 100%;
-  height: 100%;
-}
-
-
-/* Обертка когда нет подписки */
-.no-sub-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: calc(100vh - 180px);
-  padding: 0 16px;
-}
-
-.no-sub-text {
-  margin-top: 80px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 15px;
-}
-
-/* Кнопка покупки */
-.buy-sub-btn {
-  position: relative;
-  margin-bottom: 20px;
-  padding: 16px;
-  border-radius: 14px;
-  border: 1px solid var(--blue);
-  background: transparent;
-  color: var(--blue);
-  font-size: 16px;
-  overflow: hidden;
-}
-
-/* Иконка внутри кнопки */
-.buy-sub-btn .btn-icon {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.15;
-  width: 26px;
-  height: 26px;
-  pointer-events: none;
-}
-
-.buy-sub-btn svg {
-  width: 100%;
-  height: 100%;
-  color: var(--blue);
-}
-
-/* Карточка подписки */
-.subscription-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.sub-content {
-  z-index: 2;
-  position: relative;
-}
-
-.sub-title {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.sub-date {
-  font-size: 14px;
-  color: var(--muted);
-  margin-top: 6px;
-}
-
-/* Фоновая шестеренка */
-.gear-bg {
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  width: 80px;
-  height: 80px;
-  opacity: 0.08;
-  pointer-events: none;
-}
-
-.gear-bg svg {
-  width: 100%;
-  height: 100%;
-  color: var(--blue);
-}
-
-.subscription-card {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.subscription-content {
-  position: relative;
-  z-index: 2;
-}
-
-.subscription-name {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.subscription-date {
-  margin-top: 6px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.buy-button {
-    position: relative;
-    background: linear-gradient(90deg, #111827, #0f172a);
-    border-radius: 16px;
-    padding: 18px;
-    font-weight: 600;
-    font-size: 16px;
-    color: white;
-    overflow: hidden;
-}
-
-
-.subscription-icon svg {
-  width: 50px;
-  height: 50px;
-  color: var(--blue);
-}
-
-.buy-card {
-  margin-top: auto;
-}
-
-.no-subscriptions {
-  text-align: center;
-  color: var(--muted);
-  margin-top: 60px;
-  margin-bottom: 20px;
-  font-size: 14px;
-}
-
-#page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 70px);
-}
-
-.buy-card {
-  margin-top: auto;
-  margin-bottom: 20px;
-}
-
-/* ===== MRKTPARS v2.2 Deep Dark Edition ===== */
-
-:root {
-  --bg: #0a0f14;
-  --card: rgba(255,255,255,0.02);
-  --accent: #1b2230;
-  --accent-hover: #232c3d;
-  --accent-glow: #2c3548;
-  --text: #e6f1ff;
-  --muted: #6b7280;
-}
-
-/* Subtle blur поверх фона */
+/* subtle background glow */
 body::before {
   content: "";
   position: fixed;
@@ -454,29 +36,24 @@ body::before {
 }
 
 #app {
+  min-height: 100vh;
+  padding-bottom: 90px;
   position: relative;
   z-index: 2;
 }
 
-/* Верхний мягкий градиент */
-.top-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(
-    180deg,
-    rgba(27,34,48,0.8),
-    rgba(10,15,20,0)
-  );
-  z-index: 1;
-  pointer-events: none;
+h1 {
+  font-size: 28px;
+  margin: 20px;
 }
 
-/* Карточки */
+/* ================== CARDS ================== */
+
 .card {
   background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 16px;
   border: 1px solid rgba(44,53,72,0.4);
   backdrop-filter: blur(12px);
   transition: all 0.25s ease;
@@ -487,195 +64,14 @@ body::before {
   box-shadow: 0 0 20px rgba(44,53,72,0.35);
 }
 
-/* Подсветка активной подписки */
-.subscription-card {
-  border: 1px solid var(--accent-glow);
-  box-shadow: 0 0 18px rgba(44,53,72,0.35);
-}
-
-/* Кнопки */
-.primary-btn {
-  background: var(--accent);
-  border: 1px solid var(--accent-glow);
-  color: #d1d5db;
-  transition: all 0.25s ease;
-}
-
-.primary-btn:hover {
-  background: var(--accent-hover);
-  box-shadow: 0 0 14px rgba(44,53,72,0.5);
-}
-
-/* Навигация */
-.bottom-nav {
-  background: rgba(10,15,20,0.98);
-  border-top: 1px solid rgba(44,53,72,0.4);
-}
-
-.bottom-nav button {
-  transition: all 0.2s ease;
-}
-
-.bottom-nav button.active {
-  color: #d1d5db;
-  transform: translateY(-4px);
-}
-
-.bottom-nav button.active svg {
-  filter: drop-shadow(0 0 6px rgba(44,53,72,0.8));
-}
-
-/* Лёгкая анимация при нажатии */
-.bottom-nav button:active {
-  transform: scale(0.92);
-}
-
-/* ===== Fade-in анимация страниц ===== */
-
-.page {
-  animation: fadeInPage 0.35s ease forwards;
-  opacity: 0;
-}
-
-@keyframes fadeInPage {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== Secure Loader ===== */
-
-.secure-loader {
-  position: fixed;
-  inset: 0;
-  background: #0a0f14;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  transition: opacity 0.4s ease;
-}
-
-.secure-loader.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.secure-box {
-  text-align: center;
-}
-
-.secure-line {
-  width: 120px;
-  height: 2px;
-  background: #2c3548;
-  margin: 0 auto 14px;
-  position: relative;
-  overflow: hidden;
-}
-
-.secure-line::after {
-  content: "";
-  position: absolute;
-  left: -40%;
-  top: 0;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #2c3548,
-    transparent
-  );
-  animation: secureScan 1.2s linear infinite;
-}
-
-@keyframes secureScan {
-  0% { left: -40%; }
-  100% { left: 100%; }
-}
-
-.secure-text {
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #6b7280;
-}
-
-/* ===== Secure Loader ===== */
-
-.secure-loader {
-  position: fixed;
-  inset: 0;
-  background: #0a0f14;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  transition: opacity 0.4s ease;
-}
-
-.secure-loader.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.secure-box {
-  text-align: center;
-}
-
-.secure-line {
-  width: 120px;
-  height: 2px;
-  background: #2c3548;
-  margin: 0 auto 14px;
-  position: relative;
-  overflow: hidden;
-}
-
-.secure-line::after {
-  content: "";
-  position: absolute;
-  left: -40%;
-  top: 0;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #2c3548,
-    transparent
-  );
-  animation: secureScan 1.2s linear infinite;
-}
-
-@keyframes secureScan {
-  0% { left: -40%; }
-  100% { left: 100%; }
-}
-
-.secure-text {
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #6b7280;
-}
-
-/* ===== Unified Profile Card ===== */
+/* ================== PROFILE ================== */
 
 .profile-unified {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.profile-top {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .profile-divider {
@@ -683,241 +79,70 @@ body::before {
   background: rgba(44,53,72,0.5);
 }
 
-.profile-subscription {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.subscription-title {
+  font-size: 13px;
+  color: var(--muted);
 }
 
-/* Subscription Badge */
-
 .subscription-badge {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  width: fit-content;
 }
 
 .subscription-badge.active {
-  background: rgba(44,53,72,0.4);
-  border: 1px solid rgba(44,53,72,0.6);
   color: #d1d5db;
-  box-shadow: 0 0 12px rgba(44,53,72,0.4);
 }
 
 .subscription-badge.inactive {
-  background: transparent;
-  border: none;
-  padding: 0;
-  color: #ff5c5c; /* мягкий красный */
-  font-weight: 500;
+  color: #ff5c5c;
   text-shadow: 0 0 6px rgba(255,92,92,0.6);
 }
 
-
-
-/* ===== Fix Profile Alignment ===== */
-
-.profile-unified {
-  align-items: flex-start;
-  text-align: left;
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
 }
 
-.profile-top {
-  align-items: flex-start;
-  text-align: left;
+/* ================== SUBSCRIPTIONS LAYOUT ================== */
+
+.subscriptions-page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 70px);
 }
 
-.profile-subscription {
-  align-items: flex-start;
-  text-align: left;
+.subscription-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
-.subscription-title {
-  text-align: left;
+.subscription-actions .card {
+  margin: 0 16px;
 }
 
-.subscription-badge {
-  align-self: flex-start;
-}
-
-/* ===== Subscription Action Cards ===== */
-
-.action-card {
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.action-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(44,53,72,0.8);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-}
-
-.action-card:active {
-  transform: scale(0.97);
-}
-
-/* ===== Enhanced Subscription Action Cards ===== */
+/* ================== ACTION CARDS ================== */
 
 .action-card {
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid rgba(44,53,72,0.6);
-  box-shadow: 0 0 12px rgba(44,53,72,0.25);
-}
-
-.action-card .subscription-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.action-card .subscription-name {
-  text-align: center;
-  width: 100%;
-  font-weight: 500;
-}
-
-/* Hover эффект */
-.action-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(60,80,120,0.9);
-  box-shadow: 0 0 22px rgba(60,80,120,0.45);
-}
-
-/* Нажатие */
-.action-card:active {
-  transform: scale(0.96);
-}
-
-/* ===== Perfect Centered Action Cards ===== */
-
-.action-card {
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(44,53,72,0.6);
-  box-shadow: 0 0 12px rgba(44,53,72,0.25);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 22px;
   text-align: center;
-
-  background: linear-gradient(
-    145deg,
-    rgba(20,25,35,0.9),
-    rgba(15,20,28,0.95)
-  );
-}
-
-.action-card .subscription-content {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.action-card .subscription-name {
-  width: 100%;
-  text-align: center;
-  font-weight: 500;
-}
-
-/* ===== Subtle Shimmer (Trial only) ===== */
-
-#trialBtn {
-  position: relative;
-  overflow: hidden;
-}
-
-#trialBtn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -60%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(60,80,120,0.25),
-    transparent
-  );
-  animation: trialShimmer 4s ease-in-out infinite;
-}
-
-@keyframes trialShimmer {
-  0% { left: -60%; }
-  50% { left: 120%; }
-  100% { left: 120%; }
-}
-
-.action-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(60,80,120,0.9);
-  box-shadow: 0 0 22px rgba(60,80,120,0.45);
-}
-
-/* ===== Secondary Action Card ===== */
-
-.secondary-action {
-  border: 1px solid rgba(44,53,72,0.6); /* теперь как у остальных */
-  background: linear-gradient(
-    145deg,
-    rgba(18,22,30,0.9),
-    rgba(14,18,25,0.95)
-  );
-}
-
-
-.secondary-action:hover {
-  border-color: rgba(70,90,140,0.8);
-  box-shadow: 0 0 16px rgba(70,90,140,0.3);
-}
-
-
-/* ===== Subscription Button Hierarchy ===== */
-
-/* Базовая карточка */
-.action-card {
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 22px;
-  text-align: center;
-
   border: 1px solid rgba(44,53,72,0.6);
   background: linear-gradient(
     145deg,
     rgba(20,25,35,0.9),
     rgba(15,20,28,0.95)
   );
-
   box-shadow: 0 0 12px rgba(44,53,72,0.25);
 }
 
-.action-card .subscription-content {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.action-card .subscription-name {
-  width: 100%;
-  text-align: center;
-  font-weight: 500;
-}
-
-/* Hover */
 .action-card:hover {
   transform: translateY(-4px);
   border-color: rgba(60,80,120,0.9);
@@ -928,8 +153,13 @@ body::before {
   transform: scale(0.96);
 }
 
+.action-card .subscription-name {
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
 
-/* ===== 2️⃣ Trial (Shimmer) ===== */
+/* ===== Trial Shimmer ===== */
 
 #trialBtn {
   position: relative;
@@ -958,52 +188,120 @@ body::before {
   100% { left: 120%; }
 }
 
-/* ===== Subscriptions Layout ===== */
+/* ================== BOTTOM NAV ================== */
 
-.subscriptions-page {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 70px);
-}
-
-/* Убираем лишние отступы между action-кнопками */
-
-.subscription-actions .card {
-  margin: 0 16px; /* убираем верх/низ */
-}
-
-.subscription-actions {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px; /* теперь gap реально работает */
-  margin-bottom: 14px;
-}
-
-/* ===== Global Logo ===== */
-
-.global-logo {
+.bottom-nav {
   position: fixed;
-  top: 18px;
-  right: 18px;
-  width: 36px;
-  height: 36px;
-  opacity: 0.9;
-  z-index: 10;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: rgba(10,15,20,0.98);
+  border-top: 1px solid rgba(44,53,72,0.4);
+  display: flex;
 }
 
-.global-logo img {
-  width: 100%;
+.bottom-nav button {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.bottom-nav button.active {
+  color: #d1d5db;
+  transform: translateY(-4px);
+}
+
+.bottom-nav button:active {
+  transform: scale(0.92);
+}
+
+.bottom-nav svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ================== PAGE FADE ================== */
+
+.page {
+  animation: fadeInPage 0.35s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================== SECURE LOADER ================== */
+
+.secure-loader {
+  position: fixed;
+  inset: 0;
+  background: #0a0f14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.4s ease;
+}
+
+.secure-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.secure-line {
+  width: 120px;
+  height: 2px;
+  background: #2c3548;
+  margin: 0 auto 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.secure-line::after {
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: 0;
+  width: 40%;
   height: 100%;
-  filter: drop-shadow(0 0 8px rgba(44,53,72,0.6));
-  transition: transform 0.3s ease;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #2c3548,
+    transparent
+  );
+  animation: secureScan 1.2s linear infinite;
 }
 
-.global-logo:hover img {
-  transform: scale(1.1);
+@keyframes secureScan {
+  0% { left: -40%; }
+  100% { left: 100%; }
 }
 
-/* ===== Center Global Logo ===== */
+.secure-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #6b7280;
+}
+
+/* ================== CENTERED GLOBAL LOGO ================== */
 
 .global-logo-wrapper {
   width: 100%;
@@ -1011,21 +309,17 @@ body::before {
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 10px;
-  position: relative;
-  z-index: 2;
 }
 
-.global-logo {
-  width: 90px;      /* размер логотипа */
-  height: 90px;
+.global-logo-wrapper img {
+  width: 100px;
+  height: 100px;
   opacity: 0.85;
-
-  filter: drop-shadow(0 0 20px rgba(44,53,72,0.6));
+  filter: drop-shadow(0 0 25px rgba(44,53,72,0.6));
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-/* subtle hover */
-.global-logo:hover {
+.global-logo-wrapper img:hover {
   transform: scale(1.05);
   opacity: 1;
 }
