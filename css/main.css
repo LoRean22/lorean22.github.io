@@ -999,7 +999,7 @@ body::before {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* было 14px */
+  gap: 3px; /* было 14px */
   margin-bottom: 14px;
 }
 
