@@ -160,38 +160,49 @@ function renderPage(page) {
     container.innerHTML = `
       <div class="page">
         <h1>Профиль</h1>
+
         ${
           user
             ? `
-            <div class="card profile-card">
-              <div class="username">
-                @${user.username || "без username"}
-              </div>
-              <div class="tg-id">
-                Telegram ID: ${user.id}
-              </div>
-            </div>
+            <div class="card profile-unified">
 
-            <div class="card profile-card">
-              <div class="subscription-title">
-                Текущая подписка
+              <div class="profile-top">
+                <div class="username">
+                  @${user.username || "без username"}
+                </div>
+                <div class="tg-id">
+                  Telegram ID: ${user.id}
+                </div>
               </div>
-              <div class="subscription-value">
+
+              <div class="profile-divider"></div>
+
+              <div class="profile-subscription">
+                <div class="subscription-title">
+                  Статус подписки
+                </div>
+
                 ${
                   subscriptionData && subscriptionData.subscription_type
-                    ? subscriptionData.subscription_type.toUpperCase()
-                    : "Нет активной подписки"
-                }
-              </div>
-              ${
-                subscriptionData && subscriptionData.subscription_expires
-                  ? `<div class="hint">
+                    ? `
+                    <div class="subscription-badge active">
+                      ${subscriptionData.subscription_type.toUpperCase()}
+                    </div>
+                    <div class="hint">
                       Действует до: ${new Date(
                         subscriptionData.subscription_expires
                       ).toLocaleDateString()}
-                    </div>`
-                  : ""
-              }
+                    </div>
+                    `
+                    : `
+                    <div class="subscription-badge inactive">
+                      Нет активной подписки
+                    </div>
+                    `
+                }
+
+              </div>
+
             </div>
 
             ${
@@ -219,6 +230,7 @@ function renderPage(page) {
       trialBtn.addEventListener("click", activateTrial);
     }
   }
+
 }
 
 // --------------------

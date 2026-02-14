@@ -663,3 +663,52 @@ body::before {
   letter-spacing: 2px;
   color: #6b7280;
 }
+
+/* ===== Unified Profile Card ===== */
+
+.profile-unified {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-top {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-divider {
+  height: 1px;
+  background: rgba(44,53,72,0.5);
+}
+
+.profile-subscription {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Subscription Badge */
+
+.subscription-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.subscription-badge.active {
+  background: rgba(44,53,72,0.4);
+  border: 1px solid rgba(44,53,72,0.6);
+  color: #d1d5db;
+  box-shadow: 0 0 12px rgba(44,53,72,0.4);
+}
+
+.subscription-badge.inactive {
+  background: rgba(27,34,48,0.6);
+  border: 1px solid rgba(44,53,72,0.4);
+  color: #9ca3af;
+}
