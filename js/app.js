@@ -97,16 +97,46 @@ function renderPage(page) {
   }
 
   if (page === "subscriptions") {
-    container.innerHTML = `
-      <h1>Подписки</h1>
-      <div class="card clickable">
-        <div>
-          <strong>Добавить поиск</strong>
-          <span>Создай новый мониторинг</span>
+
+    const hasSubscription =
+      subscriptionData &&
+      subscriptionData.subscription_type &&
+      subscriptionData.subscription_expires &&
+      new Date(subscriptionData.subscription_expires) > new Date();
+
+    if (!hasSubscription) {
+      container.innerHTML = `
+        <h1>Подписки</h1>
+
+        <div style="text-align:center; margin-top:60px; color: var(--muted); font-size:15px;">
+          У вас нет активных подписок
         </div>
-      </div>
-    `;
+
+        <button class="primary-btn" style="margin-top:40px;">
+          Купить подписку
+        </button>
+      `;
+    } else {
+      container.innerHTML = `
+        <h1>Подписки</h1>
+
+        <div class="card profile-card">
+          <div>
+            <strong>${subscriptionData.subscription_type.toUpperCase()}</strong>
+            <div class="hint">
+              Действует до: ${new Date(
+                subscriptionData.subscription_expires
+              ).toLocaleDateString()}
+            </div>
+          </div>
+          <button class="secondary-btn" style="width:auto; margin:0;">
+            Настроить
+          </button>
+        </div>
+      `;
+    }
   }
+
 
   if (page === "profile") {
     const user = window.tgUser;
