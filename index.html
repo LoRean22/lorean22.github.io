@@ -2,39 +2,65 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MRKTPARS</title>
 
-  <!-- Telegram WebApp -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- Telegram Mini App -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
   <!-- Hacker Font -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="main.css" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="./css/main.css" />
 </head>
 
 <body>
 
-<div class="grid-bg"></div>
+  <!-- Фоновая сетка -->
+  <div class="grid-bg"></div>
 
-<div class="app-container">
+  <div id="app">
 
-  <h1>MRKTPARS</h1>
+    <!-- Контейнер страниц -->
+    <div id="page-container"></div>
 
-  <div id="content">
-    <!-- Тут твой JS рендерит профиль / подписку -->
+    <!-- Нижняя навигация -->
+    <nav class="bottom-nav">
+      <button data-page="info" class="active">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z"
+            clip-rule="evenodd" />
+        </svg>
+        <span>Инфо</span>
+      </button>
+
+      <button data-page="subscriptions">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456l.33-1.652ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+            clip-rule="evenodd" />
+        </svg>
+        <span>Подписки</span>
+      </button>
+
+      <button data-page="profile">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z"
+            clip-rule="evenodd" />
+        </svg>
+        <span>Профиль</span>
+      </button>
+    </nav>
+
   </div>
 
-</div>
-
-<div class="bottom-nav">
-  <button class="active">Информация</button>
-  <button>Подписки</button>
-  <button>Профиль</button>
-</div>
-
-<script src="script.js"></script>
+  <script src="./js/telegram.js"></script>
+  <script src="./js/app.js"></script>
 
 </body>
 </html>
