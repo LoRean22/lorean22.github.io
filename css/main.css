@@ -74,6 +74,15 @@ h1 {
   text-align: left;
 }
 
+/* 🔥 ВОТ ДОБАВЛЕННЫЙ СТИЛЬ */
+.tg-id {
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.8;
+  margin-top: 2px;
+  font-weight: 400;
+}
+
 .profile-divider {
   height: 1px;
   background: rgba(44,53,72,0.5);
@@ -300,4 +309,3 @@ h1 {
   letter-spacing: 2px;
   color: #6b7280;
 }
-
