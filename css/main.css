@@ -982,3 +982,23 @@ body::before {
   border-color: rgba(70,90,140,0.7);
   box-shadow: 0 0 14px rgba(70,90,140,0.3);
 }
+
+/* ===== Subscriptions Layout ===== */
+
+.subscriptions-page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 70px);
+}
+
+.subscription-status-card {
+  margin-top: 10px;
+}
+
+.subscription-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}

@@ -106,35 +106,56 @@ function renderPage(page) {
 
 if (!hasSubscription) {
   container.innerHTML = `
-    <div class="page">
+    <div class="page subscriptions-page">
+
       <h1>Подписки</h1>
 
-      <div class="no-subscriptions">
-        У вас нет активных подписок
-      </div>
+      <!-- Статус-карточка -->
+      <div class="card profile-unified subscription-status-card">
 
-      <div class="card subscription-card action-card" id="buySubBtn">
-        <div class="subscription-content">
-          <div class="subscription-name">
-            Купить подписку
+        <div class="profile-subscription">
+          <div class="subscription-title">
+            Статус подписки
+          </div>
+
+          <div class="subscription-badge inactive">
+            Подписка отсутствует
+          </div>
+
+          <div class="hint">
+            Для доступа к функциям необходимо активировать подписку
           </div>
         </div>
+
       </div>
 
-      <div class="card subscription-card action-card" id="trialBtn">
-        <div class="subscription-content">
-          <div class="subscription-name">
-            Получить пробную подписку
-          </div>
-        </div>
-      </div>
+      <!-- Блок действий -->
+      <div class="subscription-actions">
 
-      <div class="card subscription-card action-card secondary-action" id="activateKeyBtn">
-        <div class="subscription-content">
-          <div class="subscription-name">
-            Ввести ключ активации
+        <div class="card subscription-card action-card" id="buySubBtn">
+          <div class="subscription-content">
+            <div class="subscription-name">
+              Купить подписку
+            </div>
           </div>
         </div>
+
+        <div class="card subscription-card action-card" id="trialBtn">
+          <div class="subscription-content">
+            <div class="subscription-name">
+              Получить пробную подписку
+            </div>
+          </div>
+        </div>
+
+        <div class="card subscription-card action-card" id="activateKeyBtn">
+          <div class="subscription-content">
+            <div class="subscription-name">
+              Ввести ключ активации
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
