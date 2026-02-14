@@ -742,3 +742,20 @@ body::before {
 .subscription-badge {
   align-self: flex-start;
 }
+
+/* ===== Subscription Action Cards ===== */
+
+.action-card {
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(44,53,72,0.8);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.action-card:active {
+  transform: scale(0.97);
+}

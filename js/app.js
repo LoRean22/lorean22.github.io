@@ -104,42 +104,39 @@ function renderPage(page) {
     const hasSubscription =
       subscriptionData && subscriptionData.subscription_type;
 
-    if (!hasSubscription) {
-      container.innerHTML = `
-        <div class="page">
-          <h1>Подписки</h1>
+if (!hasSubscription) {
+  container.innerHTML = `
+    <div class="page">
+      <h1>Подписки</h1>
 
-          <div class="no-subscriptions">
-            У вас нет активных подписок
+      <div class="no-subscriptions">
+        У вас нет активных подписок
+      </div>
+
+      <div class="card subscription-card action-card" id="buySubBtn">
+        <div class="subscription-content">
+          <div class="subscription-name">
+            Купить подписку
           </div>
-
-          <div class="card subscription-card buy-card">
-            <div class="subscription-content">
-              <div class="subscription-name">
-                Купить подписку
-              </div>
-            </div>
-
-            <div class="subscription-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.954 16.92c-.442-.86-.97-1.673-1.576-2.426"/>
-              </svg>
-            </div>
-          </div>
-
-          <button class="primary-btn" id="trialBtn">
-            Получить пробную подписку (2 дня)
-          </button>
-
         </div>
-      `;
+      </div>
 
-      const trialBtn = document.getElementById("trialBtn");
-      if (trialBtn) {
-        trialBtn.addEventListener("click", activateTrial);
-      }
+      <div class="card subscription-card action-card" id="trialBtn">
+        <div class="subscription-content">
+          <div class="subscription-name">
+            Получить пробную подписку (2 дня)
+          </div>
+        </div>
+      </div>
 
-    } else {
+    </div>
+  `;
+
+  const trialBtn = document.getElementById("trialBtn");
+  if (trialBtn) {
+    trialBtn.addEventListener("click", activateTrial);
+  }
+} else {
       container.innerHTML = `
         <div class="page">
           <h1>Подписки</h1>
