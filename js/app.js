@@ -243,7 +243,7 @@ if (!hasSubscription) {
                     `
                     : `
                     <div class="subscription-badge inactive">
-                      Нет активной подписки
+                      Подписка отсутствует
                     </div>
                     `
                 }
