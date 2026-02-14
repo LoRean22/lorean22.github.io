@@ -323,3 +323,59 @@ h1 {
   transform: scale(1.05);
   opacity: 1;
 }
+
+/* ================== CENTER WATERMARK LOGO ================== */
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;     /* размер логотипа */
+  height: 300px;
+
+  transform: translate(-50%, -50%);
+  background: url("./assets/logo.svg") no-repeat center;
+  background-size: contain;
+
+  opacity: 0.05;    /* прозрачность */
+  pointer-events: none;
+  z-index: 0;       /* ниже всего */
+}
+
+/* ================== LIVE CENTER WATERMARK LOGO ================== */
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+
+  transform: translate(-50%, -50%);
+  background: url("./assets/logo.svg") no-repeat center;
+  background-size: contain;
+
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+
+  animation: logoPulse 10s ease-in-out infinite;
+}
+
+/* Медленное "дыхание" */
+@keyframes logoPulse {
+  0% {
+    opacity: 0.035;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.055;
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+  100% {
+    opacity: 0.035;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
