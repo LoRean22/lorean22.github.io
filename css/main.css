@@ -89,9 +89,11 @@ h1 {
 }
 
 .subscription-title {
-  font-size: 13px;
-  color: var(--muted);
+  font-size: 14px;
+  color: var(--text);   /* белый */
+  font-weight: 500;
 }
+
 
 .subscription-badge {
   font-size: 14px;

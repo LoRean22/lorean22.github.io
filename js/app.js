@@ -88,11 +88,11 @@ function renderPage(page) {
   if (page === "info") {
     container.innerHTML = `
       <div class="page">
-        <h1>MRKTPARS</h1>
+        <h1>Информация</h1>
         <div class="card">
           <div>
-            <strong>Авито Парсер</strong>
-            <span>Следи за выгодными объявлениями</span>
+            <strong>Новостной канал</strong>
+            <span>\nСледи за выгодными объявлениями</span>
           </div>
         </div>
       </div>
