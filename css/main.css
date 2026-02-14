@@ -980,4 +980,26 @@ body::before {
   margin-bottom: 14px;
 }
 
+/* ===== Global Logo ===== */
+
+.global-logo {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  opacity: 0.9;
+  z-index: 10;
+}
+
+.global-logo img {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 8px rgba(44,53,72,0.6));
+  transition: transform 0.3s ease;
+}
+
+.global-logo:hover img {
+  transform: scale(1.1);
+}
 
