@@ -362,3 +362,52 @@ button {
   height: 100%;
   color: var(--blue);
 }
+
+.subscription-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.subscription-content {
+  position: relative;
+  z-index: 2;
+}
+
+.subscription-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.subscription-date {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.subscription-icon {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.06;
+  z-index: 1;
+}
+
+.subscription-icon svg {
+  width: 140px;
+  height: 140px;
+  color: var(--blue);
+}
+
+.buy-card {
+  margin-top: auto;
+}
+
+.no-subscriptions {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 60px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}

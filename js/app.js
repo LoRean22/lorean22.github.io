@@ -97,61 +97,60 @@ function renderPage(page) {
   }
 
   if (page === "subscriptions") {
-    const hasSub =
-      subscriptionData &&
-      subscriptionData.subscription_type &&
-      subscriptionData.subscription_expires &&
-      new Date(subscriptionData.subscription_expires) > new Date();
+    const hasSubscription =
+      subscriptionData && subscriptionData.subscription_type;
 
-    if (!hasSub) {
+    if (!hasSubscription) {
       container.innerHTML = `
         <h1>Подписки</h1>
 
-        <div class="no-sub-wrapper">
-          <div class="no-sub-text">
-            У вас нет активных подписок
+        <div class="no-subscriptions">
+          У вас нет активных подписок
+        </div>
+
+        <div class="card subscription-card buy-card">
+          <div class="subscription-content">
+            <div class="subscription-name">
+              Купить подписку
+            </div>
           </div>
 
-          <button class="buy-sub-btn">
-            Купить подписку
-
-            <span class="btn-icon">
-              <!-- Твоя иконка -->
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M6 2l1.5 4H22l-2 7H9l-1.5-4H3"/>
-              </svg>
-            </span>
-          </button>
+          <div class="subscription-icon">
+            <!-- твоя новая иконка -->
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.954 16.92c-.442-.86-.97-1.673-1.576-2.426a3.87 3.87 0 0 0-1.706-1.147a1.54 1.54 0 0 0-.928.07c-.49.15-1.078.449-1.597.638c-.29.11-.539.23-.698.12a2.2 2.2 0 0 1-.49-.519c-.398-.549-.728-1.237-1.077-1.706a5.4 5.4 0 0 0-1.507-1.457a1.656 1.656 0 0 0-2.504.888a2.35 2.35 0 0 0 .11 1.647q.293.677.738 1.267q1.001 1.16 1.866 2.425c.17.279.359.568.509.858q.12.21.2.439a17 17 0 0 0-1.996-.719a1.64 1.64 0 0 0-.908.09a1.11 1.11 0 0 0-.699.928c-.03.703.155 1.4.529 1.996a4.14 4.14 0 0 0 1.417 1.307c1.167.658 2.564.698 3.941 1.327"/>
+            </svg>
+          </div>
         </div>
       `;
     } else {
       container.innerHTML = `
         <h1>Подписки</h1>
 
-        <div class="card subscription-card clickable">
-          <div class="sub-content">
-            <div class="sub-title">
+        <div class="card subscription-card">
+          <div class="subscription-content">
+            <div class="subscription-name">
               ${subscriptionData.subscription_type.toUpperCase()}
             </div>
-
-            <div class="sub-date">
+            <div class="subscription-date">
               Действует до: ${new Date(
                 subscriptionData.subscription_expires
               ).toLocaleDateString()}
             </div>
           </div>
 
-          <div class="gear-bg">
+          <div class="subscription-icon">
+            <!-- шестеренка -->
             <svg viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd"
-                d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456l.33-1.652ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-                clip-rule="evenodd"/>
+              <path fill-rule="evenodd" d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456l.33-1.652ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>
             </svg>
           </div>
         </div>
       `;
     }
   }
+
+  
 
 
 
