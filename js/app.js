@@ -71,7 +71,7 @@ async function activateTrial() {
     alert("Пробная подписка активирована на 2 дня 🚀");
 
     await initUser();
-    renderPage("profile");
+    renderPage("subscriptions");
 
   } catch (err) {
     console.error("Ошибка trial:", err);
@@ -84,6 +84,7 @@ async function activateTrial() {
 
 function renderPage(page) {
 
+  // INFO
   if (page === "info") {
     container.innerHTML = `
       <div class="page">
@@ -98,6 +99,7 @@ function renderPage(page) {
     `;
   }
 
+  // SUBSCRIPTIONS
   if (page === "subscriptions") {
     const hasSubscription =
       subscriptionData && subscriptionData.subscription_type;
@@ -124,8 +126,19 @@ function renderPage(page) {
               </svg>
             </div>
           </div>
+
+          <button class="primary-btn" id="trialBtn">
+            Получить пробную подписку (2 дня)
+          </button>
+
         </div>
       `;
+
+      const trialBtn = document.getElementById("trialBtn");
+      if (trialBtn) {
+        trialBtn.addEventListener("click", activateTrial);
+      }
+
     } else {
       container.innerHTML = `
         <div class="page">
@@ -154,6 +167,7 @@ function renderPage(page) {
     }
   }
 
+  // PROFILE
   if (page === "profile") {
     const user = window.tgUser;
 
@@ -204,17 +218,6 @@ function renderPage(page) {
               </div>
 
             </div>
-
-            ${
-              !subscriptionData ||
-              !subscriptionData.subscription_type
-                ? `
-                <button class="primary-btn" id="trialBtn">
-                  Получить пробную подписку (2 дня)
-                </button>
-                `
-                : ""
-            }
             `
             : `
             <div class="card">
@@ -224,13 +227,7 @@ function renderPage(page) {
         }
       </div>
     `;
-
-    const trialBtn = document.getElementById("trialBtn");
-    if (trialBtn) {
-      trialBtn.addEventListener("click", activateTrial);
-    }
   }
-
 }
 
 // --------------------
@@ -248,7 +245,7 @@ buttons.forEach((btn) => {
 });
 
 // --------------------
-// SECURE LOADER HIDE
+// SECURE LOADER
 // --------------------
 
 window.addEventListener("load", () => {
