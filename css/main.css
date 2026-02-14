@@ -712,3 +712,29 @@ body::before {
   border: 1px solid rgba(44,53,72,0.4);
   color: #9ca3af;
 }
+
+
+/* ===== Fix Profile Alignment ===== */
+
+.profile-unified {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.profile-top {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.profile-subscription {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.subscription-title {
+  text-align: left;
+}
+
+.subscription-badge {
+  align-self: flex-start;
+}
