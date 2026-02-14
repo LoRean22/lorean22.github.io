@@ -862,3 +862,19 @@ body::before {
   border-color: rgba(60,80,120,0.9);
   box-shadow: 0 0 22px rgba(60,80,120,0.45);
 }
+
+/* ===== Secondary Action Card ===== */
+
+.secondary-action {
+  border: 1px dashed rgba(44,53,72,0.6);
+  background: linear-gradient(
+    145deg,
+    rgba(18,22,30,0.9),
+    rgba(14,18,25,0.95)
+  );
+}
+
+.secondary-action:hover {
+  border-color: rgba(70,90,140,0.8);
+  box-shadow: 0 0 16px rgba(70,90,140,0.3);
+}

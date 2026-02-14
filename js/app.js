@@ -129,12 +129,27 @@ if (!hasSubscription) {
         </div>
       </div>
 
+      <div class="card subscription-card action-card secondary-action" id="activateKeyBtn">
+        <div class="subscription-content">
+          <div class="subscription-name">
+            Ввести ключ активации
+          </div>
+        </div>
+      </div>
+
     </div>
   `;
 
   const trialBtn = document.getElementById("trialBtn");
   if (trialBtn) {
     trialBtn.addEventListener("click", activateTrial);
+  }
+
+  const activateKeyBtn = document.getElementById("activateKeyBtn");
+  if (activateKeyBtn) {
+    activateKeyBtn.addEventListener("click", () => {
+      alert("Функция активации ключа скоро будет доступна 🔐");
+    });
   }
 } else {
       container.innerHTML = `
