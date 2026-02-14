@@ -792,3 +792,73 @@ body::before {
 .action-card:active {
   transform: scale(0.96);
 }
+
+/* ===== Perfect Centered Action Cards ===== */
+
+.action-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(44,53,72,0.6);
+  box-shadow: 0 0 12px rgba(44,53,72,0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 22px;
+  text-align: center;
+
+  background: linear-gradient(
+    145deg,
+    rgba(20,25,35,0.9),
+    rgba(15,20,28,0.95)
+  );
+}
+
+.action-card .subscription-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-card .subscription-name {
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ===== Subtle Shimmer (Trial only) ===== */
+
+#trialBtn {
+  position: relative;
+  overflow: hidden;
+}
+
+#trialBtn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(60,80,120,0.25),
+    transparent
+  );
+  animation: trialShimmer 4s ease-in-out infinite;
+}
+
+@keyframes trialShimmer {
+  0% { left: -60%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
+}
+
+.action-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(60,80,120,0.9);
+  box-shadow: 0 0 22px rgba(60,80,120,0.45);
+}
