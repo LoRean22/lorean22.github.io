@@ -1,7 +1,7 @@
 const container = document.getElementById("page-container");
 const buttons = document.querySelectorAll(".bottom-nav button");
 
-const API_BASE = "http://api.mrktpars.ru";
+const API_BASE = "https://api.mrktpars.ru";
 
 let subscriptionData = null;
 
