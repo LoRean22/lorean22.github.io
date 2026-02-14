@@ -7,7 +7,7 @@ let subscriptionData = null;
 
 // --------------------
 // ИНИЦИАЛИЗАЦИЯ ПОЛЬЗОВАТЕЛЯ
-// --------------------123
+// --------------------
 
 async function initUser() {
   const user = window.tgUser;
@@ -36,8 +36,46 @@ async function initUser() {
 
     subscriptionData = await response.json();
     console.log("Данные подписки:", subscriptionData);
+
   } catch (err) {
     console.error("Ошибка соединения:", err);
+  }
+}
+
+// --------------------
+// АКТИВАЦИЯ TRIAL
+// --------------------
+
+async function activateTrial() {
+  const user = window.tgUser;
+  if (!user) return;
+
+  try {
+    const response = await fetch(`${API_BASE}/users/trial`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tg_id: user.id,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      alert(data.error);
+      return;
+    }
+
+    alert("Пробная подписка активирована на 2 дня 🚀");
+
+    // Обновляем данные подписки
+    await initUser();
+    renderPage("profile");
+
+  } catch (err) {
+    console.error("Ошибка trial:", err);
   }
 }
 
@@ -108,6 +146,17 @@ function renderPage(page) {
                   : ""
               }
           </div>
+
+          ${
+            !subscriptionData ||
+            !subscriptionData.subscription_type
+              ? `
+              <button class="primary-btn" id="trialBtn">
+                Получить пробную подписку (2 дня)
+              </button>
+              `
+              : ""
+          }
           `
           : `
           <div class="card">
@@ -116,6 +165,12 @@ function renderPage(page) {
           `
       }
     `;
+
+    // Навешиваем обработчик на кнопку trial
+    const trialBtn = document.getElementById("trialBtn");
+    if (trialBtn) {
+      trialBtn.addEventListener("click", activateTrial);
+    }
   }
 }
 
