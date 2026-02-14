@@ -426,27 +426,30 @@ button {
   margin-bottom: 20px;
 }
 
-/* === MRKTPARS V2 Dark Blue Edition === */
+/* ===== MRKTPARS v2.2 Deep Dark Edition ===== */
 
 :root {
   --bg: #0a0f14;
-  --card: rgba(255,255,255,0.03);
-  --blue: #1e3a8a;
-  --blue-glow: #2563eb;
+  --card: rgba(255,255,255,0.02);
+  --accent: #1b2230;
+  --accent-hover: #232c3d;
+  --accent-glow: #2c3548;
   --text: #e6f1ff;
-  --muted: #6c7a89;
+  --muted: #6b7280;
 }
 
-/* Фоновая сетка */
-.grid-bg {
+/* Subtle blur поверх фона */
+body::before {
+  content: "";
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background-image:
-    linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  background: radial-gradient(
+    circle at top,
+    rgba(44,53,72,0.25),
+    transparent 60%
+  );
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -455,52 +458,74 @@ button {
   z-index: 2;
 }
 
+/* Верхний мягкий градиент */
+.top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    180deg,
+    rgba(27,34,48,0.8),
+    rgba(10,15,20,0)
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
 /* Карточки */
 .card {
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(37,99,235,0.15);
-  box-shadow: 0 0 20px rgba(37,99,235,0.05);
-  transition: 0.3s ease;
+  background: var(--card);
+  border: 1px solid rgba(44,53,72,0.4);
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
 }
 
 .card:hover {
-  border-color: var(--blue-glow);
-  box-shadow: 0 0 25px rgba(37,99,235,0.25);
+  border-color: var(--accent-glow);
+  box-shadow: 0 0 20px rgba(44,53,72,0.35);
 }
 
-/* Primary кнопки */
+/* Подсветка активной подписки */
+.subscription-card {
+  border: 1px solid var(--accent-glow);
+  box-shadow: 0 0 18px rgba(44,53,72,0.35);
+}
+
+/* Кнопки */
 .primary-btn {
-  background: rgba(37,99,235,0.08);
-  border: 1px solid var(--blue-glow);
-  color: var(--blue-glow);
-  transition: 0.3s ease;
+  background: var(--accent);
+  border: 1px solid var(--accent-glow);
+  color: #d1d5db;
+  transition: all 0.25s ease;
 }
 
 .primary-btn:hover {
-  background: var(--blue-glow);
-  color: #0a0f14;
-  box-shadow: 0 0 15px var(--blue-glow);
-}
-
-/* Secondary кнопки */
-.secondary-btn {
-  border: 1px solid var(--blue-glow);
-  color: var(--blue-glow);
-}
-
-.secondary-btn:hover {
-  background: var(--blue-glow);
-  color: #0a0f14;
-  box-shadow: 0 0 12px var(--blue-glow);
+  background: var(--accent-hover);
+  box-shadow: 0 0 14px rgba(44,53,72,0.5);
 }
 
 /* Навигация */
 .bottom-nav {
-  background: rgba(10,15,20,0.95);
-  border-top: 1px solid rgba(37,99,235,0.2);
+  background: rgba(10,15,20,0.98);
+  border-top: 1px solid rgba(44,53,72,0.4);
+}
+
+.bottom-nav button {
+  transition: all 0.2s ease;
 }
 
 .bottom-nav button.active {
-  color: var(--blue-glow);
-  text-shadow: 0 0 8px var(--blue-glow);
+  color: #d1d5db;
+  transform: translateY(-4px);
+}
+
+.bottom-nav button.active svg {
+  filter: drop-shadow(0 0 6px rgba(44,53,72,0.8));
+}
+
+/* Лёгкая анимация при нажатии */
+.bottom-nav button:active {
+  transform: scale(0.92);
 }
