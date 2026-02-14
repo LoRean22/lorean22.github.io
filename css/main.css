@@ -529,3 +529,137 @@ body::before {
 .bottom-nav button:active {
   transform: scale(0.92);
 }
+
+/* ===== Fade-in анимация страниц ===== */
+
+.page {
+  animation: fadeInPage 0.35s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Secure Loader ===== */
+
+.secure-loader {
+  position: fixed;
+  inset: 0;
+  background: #0a0f14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.4s ease;
+}
+
+.secure-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.secure-box {
+  text-align: center;
+}
+
+.secure-line {
+  width: 120px;
+  height: 2px;
+  background: #2c3548;
+  margin: 0 auto 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.secure-line::after {
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #2c3548,
+    transparent
+  );
+  animation: secureScan 1.2s linear infinite;
+}
+
+@keyframes secureScan {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+.secure-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #6b7280;
+}
+
+/* ===== Secure Loader ===== */
+
+.secure-loader {
+  position: fixed;
+  inset: 0;
+  background: #0a0f14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.4s ease;
+}
+
+.secure-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.secure-box {
+  text-align: center;
+}
+
+.secure-line {
+  width: 120px;
+  height: 2px;
+  background: #2c3548;
+  margin: 0 auto 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.secure-line::after {
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #2c3548,
+    transparent
+  );
+  animation: secureScan 1.2s linear infinite;
+}
+
+@keyframes secureScan {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+.secure-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #6b7280;
+}
