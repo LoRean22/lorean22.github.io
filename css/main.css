@@ -395,8 +395,8 @@ button {
 }
 
 .subscription-icon svg {
-  width: 140px;
-  height: 140px;
+  width: 80px;
+  height: 80px;
   color: var(--blue);
 }
 
@@ -410,4 +410,15 @@ button {
   margin-top: 60px;
   margin-bottom: 20px;
   font-size: 14px;
+}
+
+#page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 70px);
+}
+
+.buy-card {
+  margin-top: auto;
+  margin-bottom: 20px;
 }
