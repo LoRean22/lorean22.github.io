@@ -1003,3 +1003,29 @@ body::before {
   transform: scale(1.1);
 }
 
+/* ===== Center Global Logo ===== */
+
+.global-logo-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.global-logo {
+  width: 90px;      /* размер логотипа */
+  height: 90px;
+  opacity: 0.85;
+
+  filter: drop-shadow(0 0 20px rgba(44,53,72,0.6));
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* subtle hover */
+.global-logo:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
