@@ -83,7 +83,7 @@ async function saveSearch() {
   }
 
   try {
-    const response = await fetch(`${API_BASE}/users/save-search`, {
+    const response = await fetch(`${API_BASE}/users/run-parser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -101,12 +101,13 @@ async function saveSearch() {
       return;
     }
 
-    alert("Ссылка сохранена 🚀");
+    alert(`Отправлено объявлений: ${data.sent}`);
 
   } catch (err) {
-    console.error("Ошибка сохранения:", err);
+    console.error("Ошибка:", err);
   }
 }
+
 
 
 // --------------------
