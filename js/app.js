@@ -72,6 +72,43 @@ async function activateTrial() {
   }
 }
 
+async function saveSearch() {
+  const user = window.tgUser;
+  const input = document.getElementById("searchInput");
+
+  if (!user) return;
+  if (!input || !input.value.trim()) {
+    alert("Введите ссылку");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_BASE}/users/save-search`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tg_id: user.id,
+        search_url: input.value.trim(),
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      alert(data.error);
+      return;
+    }
+
+    alert("Ссылка сохранена 🚀");
+
+  } catch (err) {
+    console.error("Ошибка сохранения:", err);
+  }
+}
+
+
 // --------------------
 // РЕНДЕР СТРАНИЦ
 // --------------------
@@ -206,6 +243,7 @@ function renderPage(page) {
             </label>
 
             <input 
+              id="searchInput"
               type="text" 
               placeholder="Вставьте ссылку Avito..."
               style="
@@ -219,11 +257,12 @@ function renderPage(page) {
                 outline:none;
               "
             >
+
           </div>
         </div>
 
         <div class="subscription-actions">
-          <div class="card action-card">
+          <div class="card action-card" id="saveSearchBtn">
             <div class="subscription-name">
               Запустить парсер
             </div>
@@ -233,11 +272,9 @@ function renderPage(page) {
       </div>
     `;
 
-    const backBtn = document.getElementById("backBtn");
-    if (backBtn) {
-      backBtn.addEventListener("click", () => {
-        renderPage("subscriptions");
-      });
+    const saveBtn = document.getElementById("saveSearchBtn");
+    if (saveBtn) {
+      saveBtn.addEventListener("click", saveSearch);
     }
   }
 
