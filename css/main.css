@@ -111,8 +111,10 @@ h1 {
   color: var(--text);
 }
 
-.subscription-badge.active {
-  color: #d1d5db;
+.subscription-badge.inactive {
+  color: #ff4d4d;
+  font-weight: 500;
+  text-shadow: 0 0 6px rgba(255,77,77,0.4);
 }
 
 .subscription-badge.inactive {
@@ -322,4 +324,36 @@ h1 {
   font-size: 12px;
   letter-spacing: 2px;
   color: #6b7280;
+}
+
+/* ===== Profile Background Icon ===== */
+
+.profile-card-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card-bg::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  bottom: -20px;
+
+  width: 160px;
+  height: 160px;
+
+  background-image: url("./assets/profile-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  opacity: 0.04; /* очень subtle */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* текст всегда выше иконки */
+.profile-card-bg * {
+  position: relative;
+  z-index: 1;
 }

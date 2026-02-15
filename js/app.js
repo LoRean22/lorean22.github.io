@@ -211,7 +211,7 @@ if (!hasSubscription) {
         ${
           user
             ? `
-            <div class="card profile-unified">
+            <div class="card profile-unified profile-card-bg">
 
               <div class="profile-top">
                 <div class="username">
