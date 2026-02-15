@@ -1,0 +1,24 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#2c3548" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Broken outer ring -->
+    <path d="M256 46
+             A210 210 0 0 1 466 256" />
+    <path d="M256 466
+             A210 210 0 0 1 46 256" />
+
+    <!-- Inner thin tech ring -->
+    <circle cx="256" cy="256" r="170" stroke-width="6" opacity="0.4"/>
+
+    <!-- Head -->
+    <circle cx="256" cy="210" r="55"/>
+
+    <!-- Shoulders -->
+    <path d="M150 360c30-70 182-70 212 0"/>
+
+    <!-- Tech lines -->
+    <line x1="256" y1="20" x2="256" y2="70" stroke-width="8"/>
+    <line x1="256" y1="442" x2="256" y2="492" stroke-width="8"/>
+
+  </g>
+</svg>
