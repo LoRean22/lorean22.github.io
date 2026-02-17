@@ -5,6 +5,37 @@ const API_BASE = "https://api.mrktpars.ru";
 
 let subscriptionData = null;
 
+async function activateKey() {
+  const user = window.tgUser;
+  if (!user) return;
+
+  const key = prompt("Введите ключ активации");
+
+  if (!key) return;
+
+  const response = await fetch(`${API_BASE}/users/activate-key`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      tg_id: user.id,
+      key: key.trim()
+    })
+  });
+
+  const data = await response.json();
+
+  if (data.error) {
+    alert(data.error);
+    return;
+  }
+
+  alert("Подписка успешно активирована 🚀");
+
+  await initUser();
+  renderPage("subscriptions");
+}
+
+
 // --------------------
 // ИНИЦИАЛИЗАЦИЯ ПОЛЬЗОВАТЕЛЯ
 // --------------------
@@ -234,10 +265,9 @@ function renderPage(page) {
 
       const activateKeyBtn = document.getElementById("activateKeyBtn");
       if (activateKeyBtn) {
-        activateKeyBtn.addEventListener("click", () => {
-          alert("Функция активации ключа скоро будет доступна 🔐");
-        });
+        activateKeyBtn.addEventListener("click", activateKey);
       }
+
 
     } else {
 
