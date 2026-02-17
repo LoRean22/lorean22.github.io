@@ -40,6 +40,60 @@ async function initUser() {
   }
 }
 
+async function loadProxyStats() {
+  const user = window.tgUser;
+
+  const response = await fetch(`${API_BASE}/admin/proxy-stats`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tg_id: user.id })
+  });
+
+  const data = await response.json();
+
+  document.getElementById("proxyStats").innerText =
+    `Всего: ${data.total} | Заняты: ${data.busy}`;
+}
+
+async function addProxy() {
+  const user = window.tgUser;
+  const proxy = document.getElementById("proxyInput").value;
+
+  await fetch(`${API_BASE}/admin/add-proxy`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tg_id: user.id, proxy })
+  });
+
+  alert("Прокси добавлен");
+  loadProxyStats();
+}
+
+async function createKey() {
+  const user = window.tgUser;
+
+  const subscription_type =
+    document.getElementById("subTypeInput").value;
+
+  const expires_days =
+    document.getElementById("daysInput").value;
+
+  const response = await fetch(`${API_BASE}/admin/create-key`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      tg_id: user.id,
+      subscription_type,
+      expires_days
+    })
+  });
+
+  const data = await response.json();
+
+  alert("Создан ключ:\n" + data.key);
+}
+
+
 // --------------------
 // АКТИВАЦИЯ TRIAL
 // --------------------
@@ -324,6 +378,23 @@ function renderPage(page) {
                   </div>
                   `
               }
+                            ${
+                user && user.id === 5849724815
+                  ? `
+                    <div class="card action-card" id="adminPanelBtn">
+                      <div class="subscription-name">
+                        Админ панель
+                      </div>
+                    </div>
+                  `
+                  : ""
+              }
+                            const adminBtn = document.getElementById("adminPanelBtn");
+              if (adminBtn) {
+                adminBtn.addEventListener("click", () => {
+                  renderPage("admin");
+                });
+              }
 
             </div>
             `
@@ -336,6 +407,61 @@ function renderPage(page) {
       </div>
     `;
   }
+  if (page === "admin") {
+
+  container.innerHTML = `
+    <div class="page">
+      <h1>Админ панель</h1>
+
+      <div class="card profile-unified">
+        <div class="subscription-title">Прокси статус</div>
+        <div id="proxyStats" class="hint">Загрузка...</div>
+      </div>
+
+      <div class="card">
+        <input id="proxyInput" type="text"
+          placeholder="ip:port:login:pass"
+          style="
+            width:100%;
+            padding:14px;
+            background:#0f1622;
+            border:1px solid rgba(44,53,72,0.6);
+            border-radius:12px;
+            color:#e6f1ff;
+          "
+        >
+      </div>
+
+      <div class="card action-card" id="addProxyBtn">
+        <div class="subscription-name">Добавить прокси</div>
+      </div>
+
+      <div class="card">
+        <input id="subTypeInput" type="text"
+          placeholder="Тип подписки (basic)"
+          style="width:100%;padding:14px;background:#0f1622;border:1px solid rgba(44,53,72,0.6);border-radius:12px;color:#e6f1ff;margin-bottom:8px;"
+        >
+        <input id="daysInput" type="number"
+          placeholder="Срок (дней)"
+          style="width:100%;padding:14px;background:#0f1622;border:1px solid rgba(44,53,72,0.6);border-radius:12px;color:#e6f1ff;"
+        >
+      </div>
+
+      <div class="card action-card" id="createKeyBtn">
+        <div class="subscription-name">Создать ключ</div>
+      </div>
+
+    </div>
+  `;
+
+  loadProxyStats();
+
+  document.getElementById("addProxyBtn")
+    .addEventListener("click", addProxy);
+
+  document.getElementById("createKeyBtn")
+    .addEventListener("click", createKey);
+}
 }
 
 // --------------------
