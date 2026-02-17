@@ -334,79 +334,84 @@ function renderPage(page) {
   }
 
   // PROFILE
-  if (page === "profile") {
-    const user = window.tgUser;
+// PROFILE
+if (page === "profile") {
+  const user = window.tgUser;
 
-    container.innerHTML = `
-      <div class="page">
-        <h1>Профиль</h1>
+  container.innerHTML = `
+    <div class="page">
+      <h1>Профиль</h1>
 
-        ${
-          user
-            ? `
-            <div class="card profile-unified">
+      ${
+        user
+          ? `
+          <div class="card profile-unified">
 
-              <div class="username">
-                @${user.username || "без username"}
-              </div>
-
-              <div class="tg-id">
-                Telegram ID: ${user.id}
-              </div>
-
-              <div class="profile-divider"></div>
-
-              <div class="subscription-title">
-                Статус:
-              </div>
-
-              ${
-                subscriptionData && subscriptionData.subscription_type
-                  ? `
-                  <div class="subscription-badge active">
-                    ${subscriptionData.subscription_type.toUpperCase()}
-                  </div>
-                  <div class="hint">
-                    Действует до: ${new Date(
-                      subscriptionData.subscription_expires
-                    ).toLocaleDateString()}
-                  </div>
-                  `
-                  : `
-                  <div class="subscription-badge inactive">
-                    Подписка отсутствует
-                  </div>
-                  `
-              }
-                            ${
-                user && user.id === 5849724815
-                  ? `
-                    <div class="card action-card" id="adminPanelBtn">
-                      <div class="subscription-name">
-                        Админ панель
-                      </div>
-                    </div>
-                  `
-                  : ""
-              }
-                            const adminBtn = document.getElementById("adminPanelBtn");
-              if (adminBtn) {
-                adminBtn.addEventListener("click", () => {
-                  renderPage("admin");
-                });
-              }
-
+            <div class="username">
+              @${user.username || "без username"}
             </div>
-            `
-            : `
-            <div class="card">
-              <strong>Нет данных пользователя</strong>
+
+            <div class="tg-id">
+              Telegram ID: ${user.id}
             </div>
-            `
-        }
-      </div>
-    `;
+
+            <div class="profile-divider"></div>
+
+            <div class="subscription-title">
+              Статус:
+            </div>
+
+            ${
+              subscriptionData && subscriptionData.subscription_type
+                ? `
+                <div class="subscription-badge active">
+                  ${subscriptionData.subscription_type.toUpperCase()}
+                </div>
+                <div class="hint">
+                  Действует до: ${new Date(
+                    subscriptionData.subscription_expires
+                  ).toLocaleDateString()}
+                </div>
+                `
+                : `
+                <div class="subscription-badge inactive">
+                  Подписка отсутствует
+                </div>
+                `
+            }
+
+            ${
+              user.id === 5849724815
+                ? `
+                <div class="card action-card" id="adminPanelBtn">
+                  <div class="subscription-name">
+                    Админ панель
+                  </div>
+                </div>
+                `
+                : ""
+            }
+
+          </div>
+          `
+          : `
+          <div class="card">
+            <strong>Нет данных пользователя</strong>
+          </div>
+          `
+      }
+    </div>
+  `;
+
+  // 👇 ВАЖНО: навешиваем обработчик ПОСЛЕ вставки HTML
+  const adminBtn = document.getElementById("adminPanelBtn");
+  if (adminBtn) {
+    adminBtn.addEventListener("click", () => {
+      renderPage("admin");
+    });
   }
+}
+
   if (page === "admin") {
 
   container.innerHTML = `
