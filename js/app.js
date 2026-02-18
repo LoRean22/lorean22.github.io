@@ -4,6 +4,9 @@ const buttons = document.querySelectorAll(".bottom-nav button");
 const API_BASE = "https://api.mrktpars.ru";
 
 let subscriptionData = null;
+let isParsing = false;
+let activeSearchUrl = null;
+
 
 async function activateKey() {
   const user = window.tgUser;
@@ -170,9 +173,7 @@ async function saveSearch() {
   try {
     const response = await fetch(`${API_BASE}/users/run-parser`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         tg_id: user.id,
         search_url: input.value.trim(),
@@ -186,10 +187,35 @@ async function saveSearch() {
       return;
     }
 
-    alert(`Отправлено объявлений: ${data.sent}`);
+    // 🔥 меняем состояние
+    isParsing = true;
+    activeSearchUrl = input.value.trim();
+
+    renderPage("parserSettings");
 
   } catch (err) {
     console.error("Ошибка:", err);
+  }
+}
+
+async function stopParser() {
+  const user = window.tgUser;
+  if (!user) return;
+
+  try {
+    await fetch(`${API_BASE}/users/stop-parser`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tg_id: user.id }),
+    });
+
+    isParsing = false;
+    activeSearchUrl = null;
+
+    renderPage("parserSettings");
+
+  } catch (err) {
+    console.error("Ошибка остановки:", err);
   }
 }
 
@@ -303,7 +329,12 @@ function renderPage(page) {
   }
 
   // PARSER SETTINGS
-  if (page === "parserSettings") {
+if (page === "parserSettings") {
+
+  // ============================
+  // ЕСЛИ ПАРСЕР ЗАПУЩЕН
+  // ============================
+  if (isParsing) {
 
     container.innerHTML = `
       <div class="page">
@@ -319,37 +350,32 @@ function renderPage(page) {
           ← Назад
         </button>
 
-        <h1>Настройка парсера</h1>
+        <h1>Активный парсинг</h1>
 
         <div class="card">
-          <div style="width:100%">
-            <label class="subscription-title">
-              Ссылка на поиск
-            </label>
+          <div class="subscription-title">
+            Статус:
+          </div>
+          <div style="margin-top:8px; color:#4ade80;">
+            ● Активен
+          </div>
 
-            <input 
-              id="searchInput"
-              type="text" 
-              placeholder="Вставьте ссылку Avito..."
-              style="
-                width:100%;
-                margin-top:8px;
-                padding:14px;
-                background:#0f1622;
-                border:1px solid rgba(44,53,72,0.6);
-                border-radius:12px;
-                color:#e6f1ff;
-                outline:none;
-              "
-            >
-
+          <div class="hint" style="margin-top:10px;">
+            ${activeSearchUrl}
           </div>
         </div>
 
+        <div class="card">
+          <label style="display:flex; gap:10px; align-items:center;">
+            <input type="checkbox" id="disableShopsToggle">
+            Выключить парсинг магазинов
+          </label>
+        </div>
+
         <div class="subscription-actions">
-          <div class="card action-card" id="saveSearchBtn">
+          <div class="card action-card" id="stopParserBtn">
             <div class="subscription-name">
-              Запустить парсер
+              Остановить парсер
             </div>
           </div>
         </div>
@@ -357,11 +383,72 @@ function renderPage(page) {
       </div>
     `;
 
-    const saveBtn = document.getElementById("saveSearchBtn");
-    if (saveBtn) {
-      saveBtn.addEventListener("click", saveSearch);
-    }
+    document
+      .getElementById("stopParserBtn")
+      .addEventListener("click", stopParser);
+
+    return;
   }
+
+  // ============================
+  // ЕСЛИ ПАРСЕР НЕ ЗАПУЩЕН
+  // ============================
+
+  container.innerHTML = `
+    <div class="page">
+
+      <button id="backBtn" style="
+        margin: 20px 16px 0;
+        background: none;
+        border: none;
+        color: #6b7280;
+        font-size: 14px;
+        cursor: pointer;
+      ">
+        ← Назад
+      </button>
+
+      <h1>Настройка парсера</h1>
+
+      <div class="card">
+        <label class="subscription-title">
+          Ссылка на поиск
+        </label>
+
+        <input 
+          id="searchInput"
+          type="text" 
+          placeholder="Вставьте ссылку Avito..."
+          style="
+            width:100%;
+            margin-top:8px;
+            padding:14px;
+            background:#0f1622;
+            border:1px solid rgba(44,53,72,0.6);
+            border-radius:12px;
+            color:#e6f1ff;
+            outline:none;
+          "
+        >
+      </div>
+
+      <div class="subscription-actions">
+        <div class="card action-card" id="saveSearchBtn">
+          <div class="subscription-name">
+            Запустить парсер
+          </div>
+        </div>
+      </div>
+
+    </div>
+  `;
+
+  document
+    .getElementById("saveSearchBtn")
+    .addEventListener("click", saveSearch);
+}
+
+  
 
   // PROFILE
 // PROFILE
